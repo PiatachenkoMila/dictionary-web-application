@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+{% autoescape off %}
+{% load static %}
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+
+<script>
+function play_audio() {
+var audio_context = new Audio("/static/mp3/context_{{context_to_play}}.mp3");
+audio_context.oncanplaythrough = function ( ) { }
+audio_context.onended = function ( ) {
+    window.location = "/{{html_form_action}}?word={{word}}&page={{page}}";
+}
+audio_context.play();
+}
+</script>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body onload="{{play_now}}">
+<!--Панель меню-->
+<ul class="sidenav">
+    <li><a href="/dictionary">Dictionary / Словник</a></li>
+    <li><a href="/freq_dict">Freq dict / Частотний словник</a></li>
+    <li><a class="active" href="/concordance">Concordance / Конкорданс</a>
+    <li><a href="/freq_dict_ner">NER / Реєстр ім. сутностей</a></li>
+    <li><a href="/record/new">New text / Новий текст</a>
+
+    </li>
+
+</ul>
+
+<div class="content"><!--розділ контенту-->
+    <h3>Concordance / Конкорданс</h3>
+
+    <form>
+        {% csrf_token %}
+        <input formaction="/{{html_form_action}}/" formmethod="post" type="submit"
+               value="SEARCH / ПОШУК">
+        <div style="overflow: hidden; padding-right: .5em;">
+            <input autofocus id="word" name="word"
+                   placeholder="Word... / Слово..."
+                   type="text" value="{{word|escape}}">
+            <input id="page" name="page" type="hidden" value="{{page}}">
+        </div>
+        <h2><strong>{{word}}</strong></h2>
+        <p>{{content}}</p>
+    </form>
+
+</div>
+</body>
+{% endautoescape %}
+</html>

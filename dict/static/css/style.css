@@ -1,0 +1,275 @@
+body {margin: 0;}
+
+ul.sidenav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+ul.sidenav li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+ul.sidenav li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+ul.sidenav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+div.content {
+    margin-left: 25%;
+    padding: 1px 16px;
+    height: 100%;
+    background-color: white;
+}
+
+@media screen and (max-width: 900px) {
+    ul.sidenav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    ul.sidenav li a {
+        float: left;
+        padding: 15px;
+    }
+    div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 700px) {
+    ul.sidenav li a {
+        text-align: center;
+        float: none;
+    }
+}
+
+textarea {/*стиль текстового поля для введення тексту*/
+    width: 100%;
+    height: 65vh;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+    position:relative;
+}
+
+input[type=text], select {/*стиль текстових полів*/
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] { /*стиль submit-ккопки ПОШУК*/
+    float: right;
+    background-color: #4CAF50; /*колір фону- зелений*/
+    color: white;
+    display: inline-block;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#btn_full_width { /*стиль submit-ккопки ПОШУК*/
+    width:100%;
+    background-color: #4CAF50; /*колір фону- зелений*/
+    color: white;
+    display: inline-block;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+/*змінення відтінку кольору фону при наведенні на кнопку ПОШУК*/
+    background-color: #45a049;
+}
+
+mark {
+  background-color: yellow;
+  color: black;
+}
+
+mark_PERSON {
+  background-color: chartreuse;
+  color: black;
+}
+mark_PERS {
+  background-color: chartreuse;
+  color: black;
+}
+mark_LOC {
+  background-color: darkorange;
+  color: black;
+}
+mark_GPE {
+  background-color: darkorange;
+  color: black;
+}
+mark_EVENT {
+  background-color: gold;
+  color: black;
+}
+mark_WORK_OF_ART {
+  background-color: gold;
+  color: black;
+}
+mark_DATE {
+  background-color: LightSeaGreen;
+  color: black;
+}
+mark_TIME {
+  background-color: LightSeaGreen;
+  color: black;
+}
+mark_ORG {
+  background-color: cyan;
+  color: black;
+}
+mark_PERCENT, mark_MONEY, mark_QUANTITY, mark_ORDINAL, mark_CARDINAL{
+  background-color: lightgray;
+  color: black;
+}
+mark_NORP{
+  background-color: DeepPink;
+  color: black;
+}
+mark_PRODUCT{
+  background-color: Orchid;
+  color: black;
+}
+mark_LANGUAGE{
+  background-color: GoldenRod;
+  color: black;
+}
+mark_MISC{
+  background-color: wheat;
+  color: black;
+}
+table {/*стиль таблиці*/
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {/*тут встановлюється стиль межі для комірок таблиці*/
+    border: 1px solid #ddd;
+}
+
+th, td {/*вирівнювання тексту та відступ для комірок таблиці*/
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+th {/*стиль рядка заголовків таблиці*/
+    background-color: #4CAF50; /*колір фону - зелений*/
+    color: white;
+}
+
+/*Далі - стиль прапорця*/
+.designCheckBox {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 20px auto;
+  background: #fcfff4;
+  background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%,
+  #b3bead 100%);
+  background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+  box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.designCheckBox label {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  background: -webkit-linear-gradient(top, #222222 0%, #45484d 100%);
+  background: linear-gradient(to bottom, #222222 0%, #45484d 100%);
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px white;
+}
+
+.designCheckBox label:after {
+  content: '';
+  width: 18px;
+  height: 10px;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  border: 3px solid #27ae60;
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  opacity: 0;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.designCheckBox label:hover::after {
+  opacity: 0.3;
+}
+
+.designCheckBox input[type=checkbox] {
+  visibility: hidden;
+}
+
+.designCheckBox input[type=checkbox]:checked + label:after {
+  opacity: 1;
+}
+
+@media
+	  only screen
+    and (max-width: 760px), (min-device-width: 768px)
+    and (max-device-width: 1024px)  {
+
+		/* Force table to not be like tables anymore */
+		.myTable table, .myTable tbody, .myTable td, .myTable tr {
+			display: block;
+		}
+
+    .myTable tr {
+      margin: 0 0 1rem 0;
+    }
+
+		.myTable td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 0%;
+		}
+
+		.myTable td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 0;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}

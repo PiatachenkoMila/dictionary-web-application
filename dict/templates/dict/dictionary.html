@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+{% autoescape off %}
+{% load static %}
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+
+<script>
+var audio_term = new Audio("/static/mp3/term_{{current_term_id}}.mp3");
+audio_term.oncanplaythrough = function ( ) { }
+audio_term.onended = function ( ) { }
+var audio_def = new Audio("/static/mp3/definition_{{current_term_id}}.mp3");
+audio_def.oncanplaythrough = function ( ) { }
+audio_def.onended = function ( ) { }
+var audio_cont = new Audio("/static/mp3/context_{{context_id}}.mp3");
+audio_cont.oncanplaythrough = function ( ) { }
+audio_cont.onended = function ( ) { }
+
+</script>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<!--Панель меню-->
+<ul class="sidenav">
+    <li><a class="active" href="/dictionary">Dictionary / Словник</a></li>
+    <li><a href="/freq_dict">Freq dict / Частотний словник</a></li>
+    <li><a href="/concordance">Concordance / Конкорданс</a></li>
+    <li><a href="/freq_dict_ner">NER / Реєстр ім. сутностей</a></li>
+    <li><a href="/record/new">New text / Новий текст</a>
+</ul>
+
+<div class="content"><!--розділ контенту-->
+    <h3>{{termin_reg}}</h3>
+    <form id="my_form"><!--Оголошення форми-->
+        {% csrf_token %}
+        <input formaction="/{{html_form_action}}/" formmethod="post" type="submit"
+               value="SEARCH / ПОШУК">
+        <div style="overflow: hidden; padding-right: .5em;">
+            <input autofocus id="term" name="term"
+                   placeholder="Term... / Термін..." type="text"
+                   value="{{termin|escape}}">
+            <input id="tr_id" name="tr_id" type="hidden" value="{{tran_id}}">
+        </div>
+        {{termin_and_sound}}
+        <p>{{termin_def}}<img id="def_icon" onclick="audio_def.play ( )"
+                             src="{{definition_src}}"></p>
+        <p>{{context_}}</p>
+    </form>
+</div>
+</body>
+{% endautoescape %}
+</html>

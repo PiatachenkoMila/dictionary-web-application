@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+{% autoescape off %}
+{% load static %}
+<body>
+<!--Панель меню-->
+<ul class="sidenav">
+    <li><a href="/dictionary">Dictionary / Словник</a></li>
+    <li><a class="active" href="/freq_dict">Freq dict / Частотний
+        словник</a></li>
+    <li><a href="/concordance">Concordance / Конкорданс</a></li>
+    <li><a href="/freq_dict_ner">NER / Реєстр ім. сутностей</a></li>
+    <li><a href="/record/new">New text / Новий текст</a>
+
+</ul>
+
+<div class="content"><!--розділ контенту-->
+    <h3>Frequency dictionary / Частотний словник</h3>
+
+    <form>
+        {% csrf_token %}
+        <table class="myTable">
+            <tbody>
+            <tr>
+                <td>Term / Термін:</td>
+                <td colspan="4"><input autofocus id="term" name="term"
+                                       placeholder="Term... / Термін..."
+                                       type="text" value="{{termin}}"></td>
+                <td rowspan="3"><input formaction="/freq_dict/"
+                                       formmethod="post"
+                                       type="submit"
+                                       id="btn_full_width"
+                                       value="SEARCH / ПОШУК">
+                </td>
+
+            </tr>
+            <tr style="background-color: white">
+                <td>Sort by:<br>Сортування за:</td>
+                <td>
+                    <select id="search_by_combo" name="search_by_combo"
+                            style="width: 100%;">
+                        <option {{selected_f}} value="f">Frequency / Частотою
+                        </option>
+                        <option {{selected_a}} value="a">Alphabet / Алфавітом
+                        </option>
+                        <option {{selected_inv}} value="inv">Invert alphabet /
+                            Інверт. алфавітом
+                        </option>
+                    </select>
+                </td>
+                <td colspan="2" style="text-align:center">
+                    <div class="designCheckBox">
+                        <input {{checked}} id="designCheckBox" name="check"
+                               onchange="checkstate(this)" type="checkbox"
+                               value="on"/>
+                        <label for="designCheckBox"></label>
+                    </div>
+                    Ascending<br>За зростанням
+                </td>
+            </tr>
+            <tr>
+                <td>Freq from:<br>Частота з:</td>
+                <td><input id="fstart" name="fstart" type="text"
+                           value="{{fstart}}"></td>
+                <td>To:<br>По:</td>
+                <td><input id="fend" name="fend" type="text" value="{{fend}}">
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </form>
+    <br><br>{{content}}
+</div>
+</body>
+{% endautoescape %}
+</html>

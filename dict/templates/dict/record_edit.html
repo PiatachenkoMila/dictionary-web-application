@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<!--Панель меню-->
+<ul class="sidenav">
+    <li><a href="/dictionary">Dictionary / Словник</a></li>
+    <li><a href="/freq_dict">Freq dict / Частотний словник</a></li>
+    <li><a href="/concordance">Concordance / Конкорданс</a>
+    <li><a href="/freq_dict_ner">NER / Реєстр ім. сутностей</a></li>
+    <li><a class="active" href="/record/new">New text / Новий текст</a>
+
+    </li>
+
+</ul>
+<div class="content"><!--розділ контенту-->
+  <h3>Новий текст / New text</h3>
+
+<form method="post">{% csrf_token %}
+        {{ form.as_p }}
+    <input type="submit" id="btn_full_width" value="SAVE">
+</form>
+
+</div>
+</body>
+</html>

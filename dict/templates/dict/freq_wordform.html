@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+{% autoescape off %}
+{% load static %}
+<body>
+<!--Панель меню-->
+<ul class="sidenav">
+    <li><a href="/dictionary">Dictionary / Словник</a></li>
+    <li><a href="/freq_dict">Freq dict / Частотний словник</a></li>
+    <li><a href="/concordance">Concordance / Конкорданс</a></li>
+    <li><a href="/freq_dict_ner">NER / Реєстр ім. сутностей</a></li>
+    <li><a href="/record/new">New text / Новий текст</a>
+</ul>
+
+<div class="content"><!--розділ контенту-->
+  <h3>Wordforms frequency / Частота вживання словоформ</h3>
+<h2><strong>{{termin}}</strong></h2>
+    <br>{{content}}
+</div>
+</body>
+{% endautoescape %}
+</html>
